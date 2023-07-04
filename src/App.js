@@ -5,7 +5,6 @@ import './App.css';
 function App() {
 
 
-  // My IP address 73.226.28.41
 
 
   const [ipaddress, setIpAddress] = useState("");
