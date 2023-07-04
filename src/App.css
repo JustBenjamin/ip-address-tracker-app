@@ -4,17 +4,38 @@
   margin: 0 auto;
 }
 
+h1 {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
 form {
   position: relative;
   width: 90%;
 }
 
-input {
+input[type=text] {
   border-radius: 10px;
   width: 100%;
-  padding: 1rem 0.5rem;
+  padding: 1rem 1rem;
   border: none;
+  position: relative;
+  font-size: 18px;
   
+}
+
+input[type=submit] {
+  position: absolute;
+  background-color: black;
+  color: #fff;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  top:0;
+  right: -2rem;
+  width: 20%; 
+  height: 100%;
+  cursor: pointer;
 }
 
 button {
@@ -26,20 +47,61 @@ button {
 
 }
 
-.output {
+.display {
   display: flex;
   flex-direction: column;
-
   background-color: #fff;
   color: hsl(0, 0%, 59%);
   margin: 2rem 0;
   border-radius: 10px;
+  padding: 1rem;
+}
+
+.output {
+  margin: 0.5rem 0;
+  
+}
+
+.output > p {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.result {
+  color: #000;
+  font-weight: 700;
+
 }
 
 
+
+
+
 @media screen and (min-width: 900px) {
-  .output {
+
+.App {
+  margin-top: 2rem;
+}
+
+h1 {
+  font-size: 2.3rem;
+}
+
+  form {
+    width: 40%;
+    margin: 0 auto;
+  }
+
+
+  .display {
+    width: 50%;
+    margin: 2rem auto;
     flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+
+
+   
   }
 }
 

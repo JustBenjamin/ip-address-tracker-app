@@ -1,44 +1,80 @@
-
+import { useState } from 'react';
 import './App.css';
-import arrow from './images/icon-arrow.svg';
+
 
 function App() {
 
 
+  // My IP address 73.226.28.41
+
+
+  const [ipaddress, setIpAddress] = useState("");
+
+  const [reg, setReg] = useState("");
+  const [zone, setZone] = useState("");
+  const [isp, setISP] = useState("");
+  
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+     const fetchData =  async () => {
+        try {
+          const response = await  fetch(`https://geo.ipify.org/api/v2/country?apiKey=at_zzzwqu3XyOTkDVpdYeC0qYwx5PIkJ&ipAddress=${ipaddress}`)
+          const data = await response.json();
+          setReg(data.location.region)
+          setZone(data.location.timezone)
+          setISP(data.isp)
+        } catch (error) {
+          console.log('Error fetching data:', error);
+        }
+      }
+ 
+      fetchData();
+
+  }
+
   return (
     <div className="App">
-      <h1 style={{  color: "#fff",
-                    fontSize: "1.3rem" }}>IP Address Tracker</h1>
-      <form>
+      <h1>IP Address Tracker</h1>
+
+      <form onSubmit={handleSubmit}>
         <label>
-        <input type="text" />
-        <button type="button"><img src={arrow}  alt=""/></button>
+        <input type="text"
+        value={ipaddress}
+        onChange={(e) => setIpAddress(e.target.value)}
+          />
+
+        <input type="submit" value=">"/>
         </label>
       </form>
-      <div className="output">
-        <div>
+      <div className="display">
+        <div className="output">
           <p>IP ADDRESS</p>
-          <span></span>
+          <span className="result">{ipaddress}</span>
         </div>
 
-        <div>
+        <div className="output">
           <p>LOCATION</p>
-          <span></span>
+          <span className="result">{reg}</span>
         </div>
 
-        <div>
+        <div className="output">
           <p>TIMEZONE</p>
-          <span></span>
+
+          <span className="result">UTC{zone}</span>
         </div>
 
-        <div>
+        <div  className="output">
           <p>ISP</p>
-          <span></span>
+          <span className="result">{isp}</span>
         </div>
 
       </div>
     </div>
   );
+  
 }
 
 export default App;

@@ -10,10 +10,20 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-size: 18px;
 
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+@media screen and (min-width: 900px) {
+
+  body {
+    background-image: url("./images/pattern-bg-desktop.png");
+  }
+
 }
